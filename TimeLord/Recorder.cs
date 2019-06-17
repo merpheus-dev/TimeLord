@@ -8,14 +8,26 @@ namespace Subtegral.TimeLord.Recorders
         public abstract K Rewind();
         public abstract void Record();
 
-        private void Awake()
+        public abstract void ClearRecordings();
+
+        private void OnEnable()
         {
             RegisterRecorder();
+        }
+
+        private void OnDisable()
+        {
+            UnregisterRecorder();
         }
 
         public void RegisterRecorder()
         {
             TimeLord.Instance.RegisterRecorder(this);
+        }
+
+        public void UnregisterRecorder()
+        {
+            TimeLord.Instance.UnregisterRecorder(this);
         }
     }
 }

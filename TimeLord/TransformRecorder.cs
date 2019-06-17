@@ -17,6 +17,10 @@ namespace Subtegral.TimeLord.Recorders
         {
             return PoseData.Pop();
         }
+        public override void ClearRecordings()
+        {
+            PoseData.Clear();
+        }
     }
 
 }

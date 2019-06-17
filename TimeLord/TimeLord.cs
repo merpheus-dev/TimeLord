@@ -46,6 +46,7 @@ namespace Subtegral.TimeLord.Core
             if (configuration == null)
             {
                 configuration = ScriptableObject.CreateInstance<TimeLordConfiguration>();
+                Debug.Log("SA");
             }
 
             timeMode = configuration.AutoRecord ? TimeMode.Record : TimeMode.Play;
@@ -54,11 +55,17 @@ namespace Subtegral.TimeLord.Core
         private void RegisterFrameCounter()
         {
             OnRecord += IncreaseFrameCount;
+            OnRewind += DecreaseFrameCount;
         }
 
         private void IncreaseFrameCount()
         {
             recordedFrameCount++;
+        }
+
+        private void DecreaseFrameCount()
+        {
+            recordedFrameCount--;
         }
 
         private void Update()
@@ -82,6 +89,7 @@ namespace Subtegral.TimeLord.Core
                     CleanUpRecorders();
 
                 OnRecord?.Invoke();
+                Debug.Log("Recording...");
             }
         }
 
@@ -107,9 +115,17 @@ namespace Subtegral.TimeLord.Core
         private void RewindMode()
         {
             if (recordedFrameCount == 0)
+            {
+                CleanUpRecorders();
                 return;
+            }
 
+            foreach(var recorder in recorderCache)
+            {
+                recorder.Rewind();
+            }
 
+            OnRewind?.Invoke();
         }
 
         #region Exposed Functions
@@ -128,6 +144,15 @@ namespace Subtegral.TimeLord.Core
             CleanUpRecorders();
         }
 
+        public void StartRewind()
+        {
+            timeMode = TimeMode.Rewind;
+        }
+
+        public void StopRewind()
+        {
+            timeMode = TimeMode.Play;
+        }
         public void RegisterRecorder(IRecorder recorder)
         {
             OnRecord += recorder.Record;

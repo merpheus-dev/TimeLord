@@ -8,12 +8,25 @@ namespace Subtegral.TimeLord.Recorders
     {
         public Stack<Pose> PoseData = new Stack<Pose>();
 
+        private Pose poseCache;
+
+        public override void RegisterTarget()
+        {
+            Target = gameObject.transform;
+        }
         public override void Record()
         {
             PoseData.Push(new Pose(Target.position, Target.rotation));
         }
 
-        public override Pose Rewind()
+        public override void Rewind()
+        {
+            poseCache = RewindInternal();
+            transform.position = poseCache.position;
+            transform.rotation = poseCache.rotation;
+        }
+
+        protected override Pose RewindInternal()
         {
             return PoseData.Pop();
         }
@@ -22,5 +35,4 @@ namespace Subtegral.TimeLord.Recorders
             PoseData.Clear();
         }
     }
-
 }

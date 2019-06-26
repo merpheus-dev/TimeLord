@@ -2,15 +2,15 @@
 namespace Subtegral.TimeLord.Recorders
 {
     using Subtegral.TimeLord.Core;
-    public abstract class Recorder<T, K> : MonoBehaviour, IRecorder
+    public abstract class Recorder<TComponent, TContainer> : MonoBehaviour, IRecorder
     {
         [HideInInspector]
-        public T Target;
+        public TComponent Target;
         public abstract void Record();
         public abstract void ClearRecordings();
         public abstract void Rewind();
         public abstract void RegisterTarget();
-        protected abstract K RewindInternal();
+        protected abstract TContainer RewindInternal();
 
         private void Start()
         {

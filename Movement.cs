@@ -14,6 +14,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * TimeLord.deltaTime*Speed;
+        GetComponent<Rigidbody>().position += new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * TimeLord.deltaTime*Speed;
     }
 }

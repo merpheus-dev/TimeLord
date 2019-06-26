@@ -9,12 +9,18 @@ public class RewindListener : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && !rewindstarted)
         {
             rewindstarted = true;
-            TimeLord.Instance.StartRewind();
+            TimeLordTracker.Instance.StartRewind();
         }
         else if (Input.GetKeyUp(KeyCode.R))
         {
             rewindstarted = false;
-            TimeLord.Instance.StopRewind();
+            TimeLordTracker.Instance.StopRewind();
+            TimeLordTracker.Instance.StartRecordingManually();
         }
+        else if (Input.GetKey(KeyCode.P))
+        {
+            TimeLordTracker.Instance.PauseTime();
+        }
+
     }
 }

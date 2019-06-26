@@ -12,7 +12,7 @@ namespace Subtegral.TimeLord.Recorders
         public abstract void RegisterTarget();
         protected abstract K RewindInternal();
 
-        private void OnEnable()
+        private void Start()
         {
             RegisterTarget();
             RegisterRecorder();
@@ -25,12 +25,12 @@ namespace Subtegral.TimeLord.Recorders
 
         public void RegisterRecorder()
         {
-            TimeLord.Instance.RegisterRecorder(this);
+            TimeLordTracker.Instance.RegisterRecorder(this);
         }
 
         public void UnregisterRecorder()
         {
-            TimeLord.Instance.UnregisterRecorder(this);
+            TimeLordTracker.Instance.UnregisterRecorder(this);
         }
     }
 }

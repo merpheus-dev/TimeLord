@@ -2,5 +2,6 @@
 {
     Play,
     Record,
-    Rewind
+    Rewind,
+    Pause
 }

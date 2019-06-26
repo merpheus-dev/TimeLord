@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47df575f18108724881a997fe23d9a6d, type: 3}
   m_Name: TimeLord
   m_EditorClassIdentifier: 
-  AutoRecord: 0
+  AutoRecord: 1
   FrameLimit: -1

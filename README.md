@@ -3,7 +3,12 @@ Jobified Time control system for Unity(Rewind,SlowMo,FastForward,Stop) &amp; Phy
 
 ## TO-DO:
 - Jobs integration
-- TimeLord.deltaTime like slow mo support
-- Physics support /w RigidbodyRecorder
-- Audio support
 - AlphaBlend shader for rewind shader
+
+## Done:
+- TimeLord.deltaTime like slow mo support
+- Audio support
+- Physics support /w RigidbodyRecorder
+
+## Known issues:
+- In pause mode rigidbodies relieved from TimeLord than fall down/awaken from Sleep();

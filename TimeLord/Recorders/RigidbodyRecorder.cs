@@ -23,6 +23,7 @@ namespace Subtegral.TimeLord.Recorders
 
         public override void Rewind()
         {
+            Target.Sleep();
             containerCache = RewindInternal();
             Target.position = containerCache.Pose.position;
             Target.rotation = containerCache.Pose.rotation;

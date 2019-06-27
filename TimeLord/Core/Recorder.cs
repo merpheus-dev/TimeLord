@@ -11,6 +11,8 @@ namespace Subtegral.TimeLord.Recorders
         public abstract void Rewind();
         public abstract void RegisterTarget();
         protected abstract TContainer RewindInternal();
+        public virtual void Pause() { }
+        public virtual void UnPause() { }
 
         private void Start()
         {

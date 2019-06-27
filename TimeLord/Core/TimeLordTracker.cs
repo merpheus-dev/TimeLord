@@ -101,6 +101,7 @@ namespace Subtegral.TimeLord.Core
                     PlugDeltaTime();
                     break;
             }
+            UnPauseRecorders();
         }
 
         #region Record Mode
@@ -155,7 +156,20 @@ namespace Subtegral.TimeLord.Core
 
         private void PauseMode()
         {
+            PauseRecorders();
             OnPause?.Invoke();
+        }
+
+        private void PauseRecorders()
+        {
+            foreach (var recorder in recorderCache)
+                recorder.Pause();
+        }
+
+        private void UnPauseRecorders()
+        {
+            foreach (var recorder in recorderCache)
+                recorder.UnPause();
         }
 
         #region Exposed Functions

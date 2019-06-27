@@ -24,6 +24,16 @@ namespace Subtegral.TimeLord.Recorders
             Target = gameObject.GetComponent<AudioSource>();
         }
 
+        public override void Pause()
+        {
+            Target.Pause();
+        }
+
+        public override void UnPause()
+        {
+            Target.UnPause();
+        }
+
         public override void Rewind()
         {
             Target.pitch = -1;

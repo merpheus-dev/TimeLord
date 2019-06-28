@@ -4,8 +4,10 @@ Jobified Time control system for Unity(Rewind,SlowMo,FastForward,Stop) &amp; Phy
 ## TO-DO:
 - Jobs integration
 - AlphaBlend shader for rewind shader
+- VHS Rewind Image effect shader
 - Fast forwarding
 - Particle recorder
+- Data compression
 
 ## Done:
 - TimeLord.deltaTime like slow mo support
